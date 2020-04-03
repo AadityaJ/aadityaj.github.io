@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <script src="particle.js"></script>
+</head>
+
+<body style='padding-left: 30%;'>
+    <script>
+        var angle = 0;
+        var slider;
+
+        function setup() {
+            createCanvas(400, 400);
+        }
+
+        function draw() {
+            background(51);
+            angle = 0.5;
+            stroke(255);
+            translate(200, height);
+            branch(100);
+        }
+
+        function branch(len) {
+            line(0, 0, 0, -len);
+            translate(0, -len);
+            if (len > 4) {
+                push();
+                rotate(angle);
+                branch(len * 0.67);
+                pop();
+                push();
+                rotate(-angle);
+                branch(len * 0.67);
+                pop();
+            }
+
+            //line(0, 0, 0, -len * 0.67);
+        }
+    </script>
+</body>
+
+</html>
